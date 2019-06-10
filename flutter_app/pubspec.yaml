@@ -1,0 +1,20 @@
+name: flutter_app
+description: A new Flutter application.
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  date_format: "^1.0.4"
+  flutter_webview_plugin: "^0.3.4"
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  assets:
+    - assets/images/timg.jpg
+
+  uses-material-design: true
+
