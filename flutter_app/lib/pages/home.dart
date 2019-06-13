@@ -13,15 +13,23 @@ class HomePage extends StatefulWidget {
   }
 }
 
-class _homePage extends State<HomePage> {
+class _homePage extends State<HomePage> with AutomaticKeepAliveClientMixin<HomePage> {
   BookModel bookModel;
 
   @override
   void initState() {
+    // TODO: implement initState
+    super.initState();
     getNewsData().then((BookModel model) {
-      bookModel = model;
+      //Scaffold.of(context).showSnackBar(new SnackBar(content: new Text(model.data.length.toString())));
+      //在 setState 之前加一句判断，当前页面是否存在于构件树中，存在赋值，不存在结束操作。
+      if (!mounted) {
+        return;
+      }
 
-      Scaffold.of(context).showSnackBar(new SnackBar(content: new Text(model.data.length.toString())));
+      setState(() {
+        bookModel = model;
+      });
     });
   }
 
@@ -31,11 +39,12 @@ class _homePage extends State<HomePage> {
     // TODO: implement build
     return Scaffold(
       body: ListView(
-        children: <Widget>[prefix0.Banner(),
-
-        HomeWidget(bookModel)],
-
+        children: <Widget>[prefix0.Banner(), HomeWidget(bookModel)],
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

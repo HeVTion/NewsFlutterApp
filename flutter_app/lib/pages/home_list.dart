@@ -25,6 +25,8 @@ class HomeWidget extends StatelessWidget {
     double itemWidth = width * 160.5 / 360;
     double imageWidth = width * 110.0 / 360;
 
+    if (bookModel == null) return Text("");
+
     List<Widget> listWidget = bookModel.data.map((i) {
       return Container(
         width: itemWidth,
@@ -34,14 +36,8 @@ class HomeWidget extends StatelessWidget {
 
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-
-            Text(i.bookname),
-            
-            Image.network(i.bookCover)
-          ],
+          children: <Widget>[Text(i.bookname), Image.network(i.bookCover)],
         ),
-
       );
     }).toList();
 
@@ -50,11 +46,9 @@ class HomeWidget extends StatelessWidget {
       children: <Widget>[
         Container(
           padding: EdgeInsets.all(3.0),
-          
           child: Text("最新产品",
               style: TextStyle(fontSize: 16.0, color: Colors.black)),
         ),
-
         Wrap(
           spacing: 0,
           children: listWidget,

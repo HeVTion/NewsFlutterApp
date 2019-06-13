@@ -24,6 +24,16 @@ class _app extends State<app> {
   MinePage minePage;
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    homePage = new HomePage();
+    videoPage = new VideoPage();
+    giftPage = new GiftPage();
+    minePage = new MinePage();
+  }
+
+  @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
@@ -42,12 +52,15 @@ class _app extends State<app> {
         centerTitle: true,
       ),
       body: PageView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          //禁止页面左右滑动切换
           onPageChanged: pageChange,
           controller: pageControl,
           itemCount: 4,
           itemBuilder: (BuildContext context, int index) {
             return currentPage();
           }),
+
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.redAccent,
@@ -77,11 +90,13 @@ class _app extends State<app> {
 
   // bottomnaviagtionbar 和 pageview 的联动
   void onTap(int value) {
-    pageControl.animateToPage(value,
-        duration: const Duration(milliseconds: 300), curve: Curves.ease);
+    pageControl.jumpToPage(value);
+//    pageControl.animateToPage(value,
+//        duration: const Duration(milliseconds: 300), curve: Curves.ease);
   }
 
   void pageChange(int value) {
+
     setState(() {
       if (pageIndex != value) {
         pageIndex = value;
@@ -89,16 +104,28 @@ class _app extends State<app> {
     });
   }
 
-  Widget currentPage() {
+  currentPage() {
     switch (pageIndex) {
       case 0:
-        return homePage == null ? new HomePage() : homePage;
+        if (homePage == null) {
+          homePage = new HomePage();
+        }
+        return homePage;
       case 1:
-        return videoPage == null ? new VideoPage() : videoPage;
+        if (videoPage == null) {
+          videoPage = new VideoPage();
+        }
+        return videoPage;
       case 2:
-        return giftPage == null ? new GiftPage() : giftPage;
+        if (giftPage == null) {
+          giftPage = new GiftPage();
+        }
+        return giftPage;
       case 3:
-        return minePage == null ? new MinePage() : minePage;
+        if (homePage == null) {
+          homePage = new HomePage();
+        }
+        return minePage == null ? MinePage() : minePage;
     }
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MinePage extends StatefulWidget {
+class MinePage extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -8,10 +8,20 @@ class MinePage extends StatefulWidget {
   }
 }
 
-class _MinePage extends State<MinePage> {
+class _MinePage extends State<MinePage> with AutomaticKeepAliveClientMixin<MinePage>{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Text('MinePage');
+    return Center(
+      child: Text(
+        "请先登录",style: TextStyle(
+        fontSize: 20.0
+      ),
+      ),
+    );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }
