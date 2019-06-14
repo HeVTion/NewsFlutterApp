@@ -19,48 +19,27 @@ class VideoListPage extends StatelessWidget {
             itemBuilder: (BuildContext context, int i) {
               BookData bookData = bookModel.data[i];
 
-              return ListTile(
-                title: GestureDetector(
-                  child: Container(
-                    child: Row(
-                      children: <Widget>[
-                        Image.network(
-                          bookData.bookCover,
-                          width: 120,
-                          height: 120,
-                        ),
-                        Expanded(
-                          child: Container(
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: 1, color: Colors.black))),
-
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text(
-                                  bookData.bookname,
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-
-                                Row(
-                                  children: <Widget>[
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Text(bookData.authorName)
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
+              return Container(
+                padding: EdgeInsets.all(20),
+                child: Row(
+                  children: <Widget>[
+                    Image.network(
+                      bookData.bookCover,
+                      height: 120,
+                      width: 120,
                     ),
-                  ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Container(
+                          padding: EdgeInsets.only(bottom: 60),
+                          child: Text(bookData.bookname),
+                        ),
+                        Text(bookData.authorName)
+                      ],
+                    )
+                  ],
                 ),
               );
             },

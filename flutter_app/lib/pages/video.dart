@@ -11,8 +11,7 @@ class VideoPage extends StatefulWidget {
   }
 }
 
-class _VideoPage extends State<VideoPage>
-    with AutomaticKeepAliveClientMixin<VideoPage> {
+class _VideoPage extends State<VideoPage> {
   BookModel bookModel;
 
   @override
@@ -38,7 +37,4 @@ class _VideoPage extends State<VideoPage>
     return VideoListPage(bookModel);
   }
 
-  @override
-  // TODO: implement wantKeepAlive
-  bool get wantKeepAlive => true;
 }
