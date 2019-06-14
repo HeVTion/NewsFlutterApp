@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
 class MinePage extends StatefulWidget{
   @override
@@ -12,11 +13,11 @@ class _MinePage extends State<MinePage> with AutomaticKeepAliveClientMixin<MineP
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Center(
-      child: Text(
-        "请先登录",style: TextStyle(
-        fontSize: 20.0
-      ),
+    return new Container(
+      padding: EdgeInsets.only(top: 100.0),
+      child: WebviewScaffold(
+        url: "https://www.jianshu.com/sign_in",
+        withJavascript: true,
       ),
     );
   }

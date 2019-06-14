@@ -20,7 +20,48 @@ class VideoListPage extends StatelessWidget {
               BookData bookData = bookModel.data[i];
 
               return ListTile(
-                title: Text(bookData.bookname),
+                title: GestureDetector(
+                  child: Container(
+                    child: Row(
+                      children: <Widget>[
+                        Image.network(
+                          bookData.bookCover,
+                          width: 120,
+                          height: 120,
+                        ),
+                        Expanded(
+                          child: Container(
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        width: 1, color: Colors.black))),
+
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  bookData.bookname,
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+
+                                Row(
+                                  children: <Widget>[
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(bookData.authorName)
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
               );
             },
           );

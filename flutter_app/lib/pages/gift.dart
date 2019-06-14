@@ -15,7 +15,6 @@ class _GiftPage extends State<GiftPage> with AutomaticKeepAliveClientMixin<GiftP
     return new Container(
       padding: EdgeInsets.only(top: 100.0),
       child: WebviewScaffold(
-
         url: "http://tinterest.lechuangtec.com/janesi-headline/ZQFL/templete/fuLiCenter.html",
         withJavascript: true,
       ),

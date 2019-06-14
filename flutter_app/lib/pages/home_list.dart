@@ -22,7 +22,7 @@ class HomeWidget extends StatelessWidget {
   }
 
   _bulid(BuildContext context, double width) {
-    double itemWidth = width * 160.5 / 360;
+    double itemWidth = width * 160 / 360;
     double imageWidth = width * 110.0 / 360;
 
     if (bookModel == null) return Text("");
@@ -55,5 +55,6 @@ class HomeWidget extends StatelessWidget {
         ),
       ],
     );
+
   }
 }
